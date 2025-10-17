@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telefondan Bakanlar</title>
+    <style>
+        :root {
+            --bg: #000;
+            --text: #f5f5f5;
+            --accent: #00ffae;
+            --accent-dark: #00c98a;
+            --font: 'Courier New', monospace;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 90%;
+        }
+
+        .countdown {
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: var(--accent);
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: var(--font);
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--accent-dark);
+        }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+
+    <script>
+        const redirectURL = "https://codelomi.github.io/codelomi.xyz/";
+        let timeLeft = 5; // saniye
+
+        function updateCountdown() {
+            const countdownEl = document.getElementById("countdown");
+            countdownEl.textContent = `${timeLeft} saniye içinde yönlendiriliyorsunuz...`;
+            timeLeft--;
+
+            if (timeLeft < 0) {
+                window.location.href = redirectURL;
+            } else {
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+
+
+        function direktGit() {
+            window.location.href = redirectURL;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            updateCountdown();
+        });
+    </script>
+</head>
+
+<body>
+    <h1>
+        Bu site bilgisayara göre tasarlandı.<br>
+        Telefondan girenler için bazı oranlamalar hatalı olabilir.<br><br>
+        Anlayışınız için teşekkürler.
+    </h1>
+
+    <div id="countdown" class="countdown">5 saniye içinde yönlendiriliyorsunuz...</div>
+    <button onclick="direktGit()">Direk Git</button>
+</body>
+
+</html>
